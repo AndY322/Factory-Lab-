@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Factory.Models.Team>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GeneralInfo</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Добавить бригаду", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Специализация
+            </th>
+            <th>
+                Номер
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialization.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="form-group">
+                <input type="submit" value="Назад" class="btn btn-default" />
+            </div>
+        }
+    }
+</body>
+</html>

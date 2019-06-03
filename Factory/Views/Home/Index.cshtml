@@ -1,0 +1,132 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Factory.Models.Routing>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/CustomStyles.less" rel="stylesheet" type="text/css" />
+
+<form asp-controller="Home" asp-action="Index">
+    <p>
+        <input type="text" name="searchString">
+        <input type="submit" value="Поиск по названию детали" />
+    </p>
+</form>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <h3 class="text-danger">@ViewBag.ErrorMessage</h3>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Процесс изготовления
+        </th>
+        <th>
+            Команда
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Деталь
+        </th>
+        <th>
+            Начало изготовления
+        </th>
+        <th>
+            Поступление на склад
+        </th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Process.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail.Name)
+            </td>
+            <td>
+                @if (item.StartProduction != DateTime.Parse("01,01,1970"))
+                {
+                    @Html.DisplayFor(modelItem => item.StartProduction)
+                }
+            </td>
+            <td>
+                @if (item.PutOnStorage != DateTime.Parse("01,01,1970"))
+                {
+                    @Html.DisplayFor(modelItem => item.PutOnStorage)
+                }
+            </td>
+            @if (User.IsInRole("Admin") && item.Status != null && !item.Status.EndStatus)
+            {
+                <td>
+                    @Html.ActionLink("Продолжить по процессу", "ContinueTheProcess", new { routingId = item.Id, page = Model.PageCount })
+                </td>
+            }
+        </tr>
+    }
+</table>
+<p>
+    @using (Html.BeginForm("CreateRouting", "Home", FormMethod.Get))
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="form-group">
+                <input type="submit" value="Добавить запись" class="btn btn-default" />
+            </div>
+        }
+    }
+</p>
+<p>
+    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+</p>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<div class="form-group button-form">
+    @if (User.IsInRole("Admin"))
+    {
+        using (Html.BeginForm("GeneralInfo", "Team"))
+        {
+            <input type="submit" value="Бригады" class="btn btn-default floated" style="background-color: red" />
+        }
+        using (Html.BeginForm("GeneralInfo", "Detail"))
+        {
+            <input type="submit" value="Детали" class="btn btn-default floated" style="background-color: blue" />
+        }
+        using (Html.BeginForm("GeneralInfo", "Process"))
+        {
+            <input type="submit" value="Процессы" class="btn btn-default floated" style="background-color: gray" />
+        }
+        using (Html.BeginForm("GeneralInfo", "Equipment"))
+        {
+            <input type="submit" value="Оборудование" class="btn btn-default floated" style="background-color: aqua" />
+        }
+        using (Html.BeginForm("CrossQuery", "Home"))
+        {
+            <input type="submit" value="Перекрестный запрос" class="btn btn-default floated" style="background-color: greenyellow" />
+        }
+        using (Html.BeginForm("AddColumn", "Home"))
+        {
+            <input type="submit" value="Добавить колонку" class="btn btn-default floated" style="background-color: greenyellow" />
+        }
+        using (Html.BeginForm("DropColumn", "Home"))
+        {
+            <input type="submit" value="Удалить колонку" class="btn btn-default floated" style="background-color: greenyellow" />
+        }
+        using (Html.BeginForm("Report", "Home"))
+        {
+            <input type="submit" value="Отчет" class="btn btn-default floated" style="background-color: greenyellow" />
+        }
+    }
+</div>

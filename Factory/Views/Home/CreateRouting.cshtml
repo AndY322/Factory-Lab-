@@ -1,0 +1,76 @@
+﻿@model Factory.Models.Routing
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+@if (ViewBag.ErrorMessage != null)
+{
+    <h3 class="text-danger">@ViewBag.ErrorMessage</h3>
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Создание записи в технологической карте</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Routing</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DetailId, "Деталь", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.DetailId, ViewBag.detail as SelectList)
+                    @Html.ValidationMessageFor(model => model.DetailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProcessId, "Процесс", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ProcessId, ViewBag.process as SelectList)
+                    @Html.ValidationMessageFor(model => model.ProcessId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TeamId, "Бригада", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.TeamId, ViewBag.team as SelectList)
+                    @Html.ValidationMessageFor(model => model.TeamId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Notes, "Примечания", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Добавить" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="form-group">
+                <input type="submit" value="Назад" class="btn btn-default" />
+            </div>
+        }
+    }
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportDataSet" targetNamespace="http://tempuri.org/ReportDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportDataSet.xsd" xmlns="http://tempuri.org/ReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Report1TableAdapter" GeneratorDataComponentClassName="Report1TableAdapter" Name="Report1" UserDataComponentName="Report1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Routings.PutOnStorage, Routings.Notes, Routings.StartProduction, Details.Name, Details.Cost, Teams.Number, Processes.Name AS Expr1, DetailStatus.Name AS Expr2
+FROM            Routings INNER JOIN
+                         Teams ON Routings.TeamId = Teams.Id INNER JOIN
+                         Details ON Routings.DetailId = Details.Id INNER JOIN
+                         Processes ON Routings.ProcessId = Processes.Id INNER JOIN
+                         DetailStatus ON Routings.StatusId = DetailStatus.Id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PutOnStorage" DataSetColumn="PutOnStorage" />
+              <Mapping SourceColumn="Notes" DataSetColumn="Notes" />
+              <Mapping SourceColumn="StartProduction" DataSetColumn="StartProduction" />
+              <Mapping SourceColumn="Name" DataSetColumn="Detail" />
+              <Mapping SourceColumn="Cost" DataSetColumn="Cost" />
+              <Mapping SourceColumn="Number" DataSetColumn="Team" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Processes" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="DetailStatus" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportDataSet" msprop:Generator_UserDSName="ReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Report1" msprop:Generator_TableClassName="Report1DataTable" msprop:Generator_TableVarName="tableReport1" msprop:Generator_RowChangedName="Report1RowChanged" msprop:Generator_TablePropName="Report1" msprop:Generator_RowDeletingName="Report1RowDeleting" msprop:Generator_RowChangingName="Report1RowChanging" msprop:Generator_RowEvHandlerName="Report1RowChangeEventHandler" msprop:Generator_RowDeletedName="Report1RowDeleted" msprop:Generator_RowClassName="Report1Row" msprop:Generator_UserTableName="Report1" msprop:Generator_RowEvArgName="Report1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PutOnStorage" msprop:Generator_ColumnVarNameInTable="columnPutOnStorage" msprop:Generator_ColumnPropNameInRow="PutOnStorage" msprop:Generator_ColumnPropNameInTable="PutOnStorageColumn" msprop:Generator_UserColumnName="PutOnStorage" type="xs:dateTime" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StartProduction" msprop:Generator_ColumnVarNameInTable="columnStartProduction" msprop:Generator_ColumnPropNameInRow="StartProduction" msprop:Generator_ColumnPropNameInTable="StartProductionColumn" msprop:Generator_UserColumnName="StartProduction" type="xs:dateTime" />
+              <xs:element name="Detail" msdata:Caption="Name" msprop:Generator_ColumnVarNameInTable="columnDetail" msprop:Generator_ColumnPropNameInRow="Detail" msprop:Generator_ColumnPropNameInTable="DetailColumn" msprop:Generator_UserColumnName="Detail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cost" msprop:Generator_ColumnVarNameInTable="columnCost" msprop:Generator_ColumnPropNameInRow="Cost" msprop:Generator_ColumnPropNameInTable="CostColumn" msprop:Generator_UserColumnName="Cost" type="xs:decimal" />
+              <xs:element name="Team" msdata:Caption="Number" msprop:Generator_ColumnVarNameInTable="columnTeam" msprop:Generator_ColumnPropNameInRow="Team" msprop:Generator_ColumnPropNameInTable="TeamColumn" msprop:Generator_UserColumnName="Team" type="xs:int" />
+              <xs:element name="Processes" msdata:Caption="Expr1" msprop:Generator_ColumnVarNameInTable="columnProcesses" msprop:Generator_ColumnPropNameInRow="Processes" msprop:Generator_ColumnPropNameInTable="ProcessesColumn" msprop:Generator_UserColumnName="Processes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DetailStatus" msdata:Caption="Expr2" msprop:Generator_ColumnVarNameInTable="columnDetailStatus" msprop:Generator_ColumnPropNameInRow="DetailStatus" msprop:Generator_ColumnPropNameInTable="DetailStatusColumn" msprop:Generator_UserColumnName="DetailStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

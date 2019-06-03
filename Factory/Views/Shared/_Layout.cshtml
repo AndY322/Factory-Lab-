@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body background =../Content/Images/BackgroundImage.png>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Типа завод", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="col-md-4 col-md-offset-4" style="font-size: 120%; color: #3be228; position: absolute; right: 100px; top: 10px;">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.DisplayName(@User.Identity.Name);
+                    @Html.ActionLink("Logout", "Logoff", "Account");
+                }
+                else
+                {
+                    @Html.ActionLink("Login", "Login", "Account");
+                    @Html.ActionLink("Register", "Register", "Account");
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – Dimas Inc.</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

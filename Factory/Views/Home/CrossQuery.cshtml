@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Factory.Models.QueryHelper>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CrossQuery</title>
+</head>
+<body>
+    <table class="table">
+        <th>
+            Статус
+        </th>
+        @foreach (var item in ViewBag.detailNames)
+        {
+            <th>
+                @item
+            </th>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Status
+                </td>
+                @foreach (var motorCount in item.MotorCount)
+                {
+                    <td>
+                        @motorCount
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+    <h6 style="color: maroon">
+        @ViewBag.sqlText
+    </h6>
+</body>
+</html>

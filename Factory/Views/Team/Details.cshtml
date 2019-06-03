@@ -1,0 +1,69 @@
+﻿@using Factory.Constants
+@model Factory.Models.Team
+
+<!DOCTYPE html>
+
+<link href="~/Content/CustomStyles.less" rel="stylesheet" type="text/css" />
+
+<html>
+<body>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Specialization.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Specialization.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        Рабочие бригады
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Должность
+            </th>
+        </tr>
+
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.Position.Name)
+                </td>
+                <td>
+            </tr>
+        }
+    </table>
+    <div class="form-group button-form">
+        @using (Html.BeginForm("GeneralInfo", "Team"))
+        {
+            <input type="submit" value="Назад" class="btn btn-default floated" />
+        }
+        @using (Html.BeginForm("CreateEmployee", "Team", FormMethod.Get))
+        {
+            @Html.HiddenFor(model => model.Id)
+            <input type="submit" value="Добавить работника" class="btn btn-default floated" />
+        }
+    </div>
+</body>
+</html>
