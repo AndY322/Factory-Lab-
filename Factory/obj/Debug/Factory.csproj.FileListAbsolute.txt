@@ -115,14 +115,12 @@ D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.DeleteMasterFromRouting.resou
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.AddProcessStepColumn.resources
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.AddEndStatusColumn.resources
 D:\C#\Factory\Factory\obj\Debug\Factory.csproj.GenerateResource.cache
-D:\C#\Factory\Factory\obj\Debug\Factory.csproj.CoreCompileInputs.cache
 D:\C#\Factory\Factory\obj\Debug\Factory.csproj.CopyComplete
 D:\C#\Factory\Factory\obj\Debug\Factory.dll
 D:\C#\Factory\Factory\obj\Debug\Factory.pdb
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.AddEquipmentName.resources
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.MG.resources
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.addName.resources
-D:\C#\Factory\Factory\obj\Debug\Factory.csprojAssemblyReference.cache
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.addEqPr.resources
 D:\C#\Factory\Factory\obj\Debug\Factory.Migrations.addEquipmentName1.resources
 D:\C#\Factory\Factory\bin\SqlServerTypes\x64\msvcr120.dll
@@ -162,7 +160,6 @@ D:\C#\Factory\Factory\bin\Microsoft.VisualStudio.Shell.Interop.10.0.dll
 D:\C#\Factory\Factory\bin\VSLangProj80.dll
 D:\C#\Factory\Factory\bin\Microsoft.VisualStudio.ManagedInterfaces.dll
 D:\C#\Factory\Factory\bin\Microsoft.VisualStudio.Debugger.Interop.11.0.dll
-D:\C#\Factory\Factory\bin\System.Threading.Tasks.Dataflow.dll
 D:\C#\Factory\Factory\bin\Microsoft.VisualStudio.GraphModel.dll
 D:\C#\Factory\Factory\bin\Microsoft.MSXML.dll
 D:\C#\Factory\Factory\bin\Microsoft.Build.Utilities.Core.dll
@@ -212,5 +209,4 @@ D:\C#\Factory\Factory\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\C#\Factory\Factory\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\C#\Factory\Factory\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\C#\Factory\Factory\bin\ru\Microsoft.VisualStudio.GraphModel.resources.dll
-D:\C#\Factory\Factory\obj\Debug\RdlCompile.cache
-D:\C#\Factory\Factory\obj\Debug\RdlCompile.compiled
+D:\C#\Factory\Factory\obj\Debug\Factory.csprojAssemblyReference.cache

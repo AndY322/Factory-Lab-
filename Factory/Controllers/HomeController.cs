@@ -46,7 +46,7 @@ namespace Factory.Controllers
                 ViewBag.searchString = searchString;
                 routings = routings.Where(r => r.Detail.Name.Contains(searchString)).ToList();
             }
-            return View(routings.ToList().ToPagedList(pageNumber, PAGE_SIZE));
+            return View("Index", routings.ToList().ToPagedList(pageNumber, PAGE_SIZE));
         }
 
         [Authorize]
